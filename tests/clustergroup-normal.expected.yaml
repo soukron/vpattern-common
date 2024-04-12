@@ -386,6 +386,111 @@ rules:
     verbs:
     - '*'
 ---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: open-cluster-management-admin-rolebinding
+  namespace: open-cluster-management
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: application-ci-admin-rolebinding
+  namespace: application-ci
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: exclude-targetns-admin-rolebinding
+  namespace: exclude-targetns
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: include-ci-admin-rolebinding
+  namespace: include-ci
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: exclude-og-admin-rolebinding
+  namespace: exclude-og
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: totally-exclude-og-admin-rolebinding
+  namespace: totally-exclude-og
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: include-default-og-admin-rolebinding
+  namespace: include-default-og
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
 # Source: clustergroup/templates/imperative/rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

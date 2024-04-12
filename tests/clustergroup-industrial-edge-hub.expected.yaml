@@ -497,6 +497,141 @@ rules:
     verbs:
     - '*'
 ---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: golang-external-secrets-admin-rolebinding
+  namespace: golang-external-secrets
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: external-secrets-admin-rolebinding
+  namespace: external-secrets
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: open-cluster-management-admin-rolebinding
+  namespace: open-cluster-management
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-ml-workspace-admin-rolebinding
+  namespace: manuela-ml-workspace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-tst-all-admin-rolebinding
+  namespace: manuela-tst-all
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-ci-admin-rolebinding
+  namespace: manuela-ci
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-data-lake-admin-rolebinding
+  namespace: manuela-data-lake
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: staging-admin-rolebinding
+  namespace: staging
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: vault-admin-rolebinding
+  namespace: vault
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
 # Source: clustergroup/templates/imperative/rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

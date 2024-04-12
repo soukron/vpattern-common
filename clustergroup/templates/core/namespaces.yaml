@@ -37,6 +37,28 @@ metadata:
   {{- end }} {{- /* if kindIs "string" $ns */}}
 spec:
 ---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  {{- if kindIs "map" $ns }}
+  {{- range $k, $v := $ns }}{{- /* We loop here even though the map has always just one key */}}
+  name: {{ $k }}-admin-rolebinding
+  namespace: {{ $k }}
+  {{- end }}{{- /* range $k, $v := $ns */}}
+
+  {{- else if kindIs "string" $ns }}
+  name: {{ $ns }}-admin-rolebinding
+  namespace: {{ $ns }}
+  {{- end }} {{- /* if kindIs "string" $ns */}}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: {{ $.Values.clusterGroup.imperative.serviceAccountName }}
+    namespace: {{ $.Values.clusterGroup.imperative.namespace }}
+---
 {{- end }}
 {{- end }}
 {{- end }}

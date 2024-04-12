@@ -336,6 +336,66 @@ rules:
     verbs:
     - '*'
 ---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-stormshift-line-dashboard-admin-rolebinding
+  namespace: manuela-stormshift-line-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-stormshift-machine-sensor-admin-rolebinding
+  namespace: manuela-stormshift-machine-sensor
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-stormshift-messaging-admin-rolebinding
+  namespace: manuela-stormshift-messaging
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
+# Source: clustergroup/templates/core/namespaces.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: manuela-factory-ml-workspace-admin-rolebinding
+  namespace: manuela-factory-ml-workspace
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+  - kind: ServiceAccount
+    name: imperative-sa
+    namespace: imperative
+---
 # Source: clustergroup/templates/imperative/rbac.yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
