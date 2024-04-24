@@ -70,6 +70,10 @@ clusterGroup:
 #
 #  - open-cluster-management
 #
+  nodes: []
+# - name: node00.cluster.domain.tld:
+#   labels:
+#     cluster.ocs.openshift.io/openshift-storage: ''
   subscriptions: {}
 #  - name: advanced-cluster-management
 #    namespace: open-cluster-management

@@ -258,9 +258,9 @@
           "description": "If set to true the values is used to identify whether this is the hub cluster or an edge/spoke cluster configuration."
         },
         "sharedValueFiles": {
-            "type": "array",
-            "description": "Templated value file paths."
-	},
+          "type": "array",
+          "description": "Templated value file paths."
+        },
         "namespaces": {
           "anyOf": [
             {
@@ -271,6 +271,13 @@
             }
           ],
           "description": "This is the array of namespaces that the VP framework will create.  In addition, operator groups will also be created for each namespace.",
+          "items": {
+            "$ref": "#/definitions/Namespaces"
+          }
+        },
+        "nodes": {
+          "type": "object",
+          "description": "Description of those nodes which ArgoCD will control the labels.",
           "items": {
             "$ref": "#/definitions/Namespaces"
           }
@@ -393,28 +400,45 @@
           "type": "string"
         }
       ],
-	  "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
-	  "additionalProperties": true,
-	  "properties": {
-         "name": {
-		    "type": "string",
-		    "description": "Name of the namespace."
-          },
-	      "labels": {
-		    "type": "array",
-		    "items": {
-		      "$ref": "#/definitions/NameValue"
-		    }
-	      },
-	      "annotations": {
-		    "type": "array",
-		    "items": {
-		      "$ref": "#/definitions/NameValue"
-		    }
-	      }
-	  }
+      "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the namespace."
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValue"
+          }
+        },
+        "annotations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValue"
+          }
+        }
+      }
     },
-	"NameValue": {
+    "Nodes": {
+      "type": "object",
+      "description": "Description of those nodes which ArgoCD will control the labels.",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the node."
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NameValue"
+          }
+        }
+      }
+    },
+    "NameValue": {
       "type": "object",
       "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
       "additionalProperties": true,
@@ -427,8 +451,8 @@
           "type": "string",
           "description": "Name of the namespace."
         }
-	  }
-	},
+      }
+    },
     "Applications": {
       "type": "object",
       "description": "Description of the applications that will be created in the ArgoCD instances. The Application CRD is the Kubernetes resource object representing a deployed application instance in an environment. Two ways of defining applications: Using a list or using a dictionary.",
@@ -674,7 +698,10 @@
           "type": "string"
         },
         "clusterRoleYaml": {
-          "type": ["string", "array"]
+          "type": [
+            "string",
+            "array"
+          ]
         },
         "roleName": {
           "type": "string"
@@ -699,7 +726,10 @@
           "type": "string"
         },
         "timeout": {
-          "type": ["integer", "string"]
+          "type": [
+            "integer",
+            "string"
+          ]
         },
         "image": {
           "type": "string",
